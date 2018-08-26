@@ -1,7 +1,7 @@
 
 # Project Details
 
-The project is part of **Udacity Deep Reinforcement Learning Nano Degree program**, involving training of an agent to collect bananas in a large square world. The agent is a [**Double-Deep Q Network (DDQN)**](!https://arxiv.org/abs/1509.06461) with [**Prioritized Experience Replay**](!https://arxiv.org/abs/1511.05952). As general reinforcement learning, the problem invloves environment states percieved by the agent, actions selected and performed by the agent, rewards returned by the environment for each action at the next time step, next states. The following describe the definition of each the components  
+The project is part of **Udacity Deep Reinforcement Learning Nano Degree program**, involving training of an agent to collect bananas in a large square world. The agent is a [**Double-Deep Q Network (DDQN)**](!https://arxiv.org/abs/1509.06461) with [**Prioritized Experience Replay**](!https://arxiv.org/abs/1511.05952) and [**Dueling Network Architecture**](!https://arxiv.org/abs/1511.06581). As general reinforcement learning, the problem invloves environment states percieved by the agent, actions selected and performed by the agent, rewards returned by the environment for each action at the next time step, next states. The following describe the definition of each the components  
 - **Observation space** has 37 dimensions corresponding to the velocity of agent and ray-based perception of objects surrounding agent's forward direction
 - **Action space** has 4 dimensions corresponding to 
    - 0 - move forward
@@ -14,6 +14,7 @@ The project is part of **Udacity Deep Reinforcement Learning Nano Degree program
 
 The problem is formed as an _episodic task_ with the goal of collecting as many bananas as possible. An episode ends when the maximum number of time steps is reached. The problem is considered **solved** if the agent attains **an average score of 13 over 100 consecutive episodes**.
 
+![solved](prioritized_ddqn/images/fin_ezgif.com-video-to-gif.gif)
 
 ## Getting Started
 
@@ -53,7 +54,7 @@ The project requires the following libraries to be correctly installed.
 
 # Instructions
 
-The **DDQN** agent with **prioritized experience replay** is defined in Section 4 in `Navigation.ipynb`. Section 5 describes a method to train the agent. A snippet of the code to train an agent is shown below.
+The **DDQN** agent with **prioritized experience replay** is defined in Section 4 in `prioritized_ddqn/Navigation.ipynb`. Section 5 describes a method to train the agent. The agent combined with **dueling network architecture** is described in the same sections in `prioritized_dueling_ddqn/Navigation.ipynb`. A snippet of the code to train an agent is shown below.
 ```
 # determine torch computing device
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
