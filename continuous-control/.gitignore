@@ -1,0 +1,5 @@
+# Ignore Jupyter Checkpoints
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+*-checkpoint.ipynb
+*__pycache__*
