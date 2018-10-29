@@ -44,15 +44,15 @@ class Agent():
         self.critic_target = Critic(state_size, action_size, random_seed).to(self.device)
         self.critic_optimizer = optim.Adam(self.critic_local.parameters(), lr=lr_critic, weight_decay=weight_decay)
 
+        # Same initialization
+        self.__copy__(self.actor_local, self.actor_target)
+        self.__copy__(self.critic_local, self.critic_target)
+
         # Noise process
         self.noise = OUNoise(action_size, random_seed)
 
         # Replay memory
         self.memory = ReplayBuffer(self.device, action_size, buffer_size, self.batch_size, random_seed)
-
-        # Same initialization
-        self.__copy__(self.actor_local, self.actor_target)
-        self.__copy__(self.critic_local, self.critic_target)
 
     def step(self, states, actions, rewards, next_states, dones, time):
         """Save experience in replay memory, and use random sample from buffer to learn."""
@@ -107,7 +107,7 @@ class Agent():
 
         # Compute critic loss
         Q_expected = self.critic_local(states, actions)
-        critic_loss = F.mse_loss(Q_expected, Q_targets)
+        critic_loss = F.smooth_l1_loss(Q_expected, Q_targets.detach())
 
         # Minimize the loss
         self.critic_optimizer.zero_grad()
