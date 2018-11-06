@@ -88,7 +88,7 @@ The MDDPG agent was able to solve the problem with increasing expected accumulat
 <img src="ddpg_score.png">
 
 ### 2.2 Solved 
-The values of the parameters of the actor and the critic of each DDPG agent that successfully solve this problem are stored in `final_actor_0.pth` and `final_actor_1.pth` and `final_critic_0.pth` and `final_critic_1.pth`, respectively.
+The problem was solved in 1450 episodes. Better hyperparameter settings used during training potentially improve learning speed. Also the degree of noise that better balances exploration and exploitation could increase learning rate. The values of the parameters of the actor and the critic of each DDPG agent that successfully solve this problem are stored in `final_actor_0.pth` and `final_actor_1.pth` and `final_critic_0.pth` and `final_critic_1.pth`, respectively.
 
 
 # 3. Future Work
